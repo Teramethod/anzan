@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>暗算16</title>
+    </head>
+    <body>
+        <span id="a"></span> + <span id="b"></span> = <input type="text" id="sum" onkeyup="CheckAnswer()">
+        <span id="kekka"></span>
+
+        <script>
+            var a,b;
+            window.onload = function(){
+                Sakusei();
+                document.getElementById("sum").focus();
+
+            }
+
+            function Sakusei(){
+                a = Math.floor(Math.random()*10);
+                b = Math.floor(Math.random()*10);
+                document.getElementById("a").innerText =  a;
+                document.getElementById("b").innerText =  b;
+                document.getElementById("kekka").innerText = "";
+                document.getElementById("sum").value ="";
+            }
+
+            function CheckAnswer(){
+                var sum = document.getElementById("sum").value
+                document.getElementById("sum").value = sum;
+                if(sum == Number(a) + Number(b)){
+                    document.getElementById("kekka").innerText = "正解";
+                    setTimeout(function () {Sakusei();}, 1000);
+                }                
+            }
+        </script>
+    </body>
+</html>

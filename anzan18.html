@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>暗算17</title>
+    </head>
+    <body>
+        <span id="a"></span> + <span id="b"></span> = <input type="text" id="sum" onkeyup="CheckAnswer()">
+        <span id="kekka"></span>
+        <br>
+        <span id="imanojikan"></span>
+
+        <script>
+            var a,b,count=0;
+            var start = new Date();
+            var intervalId;
+            window.onload = function(){
+                Sakusei();
+                document.getElementById("sum").focus();
+                intervalId = setInterval('ShowTime()',1000);
+            }
+
+            function Sakusei(){
+                a = Math.floor(Math.random()*10);
+                b = Math.floor(Math.random()*10);
+                document.getElementById("a").innerText =  a;
+                document.getElementById("b").innerText =  b;
+                document.getElementById("kekka").innerText = "";
+                document.getElementById("sum").value ="";
+            }
+
+            function CheckAnswer(){
+                var sum = document.getElementById("sum").value
+                document.getElementById("sum").value = sum;
+                if(sum == Number(a) + Number(b)){
+                    count++;
+                    document.getElementById("kekka").innerText = "正解";
+                    if(count==5){
+                        var now =  new Date();
+                        var calTime = (now - start)/1000;
+                        if (calTime < 10){
+                            alert(calTime + "秒です。10秒以内に全問正解！さすが！");
+                        }else{
+                            alert(calTime + "秒です。10秒以内に全問正解頑張ろう");
+                        }
+
+                        var result = window.confirm('続けますか');
+                        if(result == true){
+                            count = 0;
+                            start = new Date();
+                        }else{
+                            clearInterval(intervalId);
+                        }
+                    }
+                    if(count<5){
+                        setTimeout(function () {Sakusei();}, 500);
+                    }
+                }                
+            }
+
+            function ShowTime(){
+                var nowForShowTime = new Date();
+                document.getElementById("imanojikan").innerText =  Math.floor((nowForShowTime - start)/1000);
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>暗算14</title>
+    </head>
+    <body>
+        <span id="a"></span> + <span id="b"></span> = <input type="text" id="sum">
+        <span id="kekka"></span>
+
+        <input type="button" value="計算する" onclick="OnButtonClick();">
+        <input type="button" value="次の問題" onclick="OnNextClick();">
+        <script>
+            var a,b;
+            window.onload = function(){
+                Sakusei();
+            }
+
+            function Sakusei(){
+                a = Math.floor(Math.random()*10);
+                b = Math.floor(Math.random()*10);
+                document.getElementById("a").innerText =  a;
+                document.getElementById("b").innerText =  b;
+                document.getElementById("kekka").innerText = "";
+                document.getElementById("sum").value ="";
+            }
+            function OnButtonClick(){
+                var sum = document.getElementById("sum").value
+                document.getElementById("sum").value = sum;
+                if(sum == Number(a) + Number(b)){
+                    document.getElementById("kekka").innerText = "正解";
+                }else{
+                    document.getElementById("kekka").innerText = "残念";
+                }
+            }
+            function OnNextClick(){
+                Sakusei();
+            }
+        </script>
+    </body>
+</html>

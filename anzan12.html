@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>暗算12</title>
+    </head>
+    <body>
+        <input type="text" id="a"> + <input type="text" id="b"> = <input type="text" id="sum"></input>
+   
+        <input type="button" value="計算する" onclick="OnButtonClick();">
+        <script>
+            function OnButtonClick(){
+
+                document.getElementById("sum").value = Number(document.getElementById("a").value) + Number(document.getElementById("b").value);
+                
+            }
+        </script>
+    </body>
+</html>
